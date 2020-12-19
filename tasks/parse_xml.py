@@ -24,7 +24,7 @@ NOTE! NER_TYPE is the label not the drug text/name
 from xml.dom.minidom import parse
 import xml.dom.minidom
 # Open XML document using minidom parser
-DOMTree = xml.dom.minidom.parse("test.xml")
+DOMTree = xml.dom.minidom.parse("21728182.xml")
 collection = DOMTree.documentElement
 
 # Get all the sentence_id in the collection
