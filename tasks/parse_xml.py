@@ -32,4 +32,4 @@ def parse_xml(xmlFile):
     tags = doc.getElementsByTagName("sentence id")
     sentences={}
     for tag in tags:
-        sentences[sentence id] = tag.getattribute("name")
+        sentences[sentence_id] = tag.getattribute("name")
