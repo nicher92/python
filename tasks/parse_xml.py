@@ -21,15 +21,27 @@ ners = {
 
 NOTE! NER_TYPE is the label not the drug text/name
 """
+from xml.dom.minidom import parse
 import xml.dom.minidom
+# Open XML document using minidom parser
+DOMTree = xml.dom.minidom.parse("21728182.xml")
+collection = DOMTree.documentElement
+if collection.hasAttribute("shelf"):
+   print ("Root element : %s" % collection.getAttribute("shelf"))
+# Get all the sentence_id in the collection
+sentences = collection.getElementsByTagName("sentence_id")
 
-def parse_xml(xmlFile):
-    """
-    parse the xml
-    """
-    doc = xml.dom.minidom.parse("data/21728182.xml")
-    #get the list of xml tags which is start with sentence
-    tags = doc.getElementsByTagName("sentence id")
-    sentences={}
-    for tag in tags:
-        sentences[sentence_id] = tag.getattribute("name")
+# Print detail of each sentence_id.
+for sentence_id in sentences:
+   print ("sentences = {")
+   if sentence_id.hasAttribute("title"):
+      print ("Title: %s" % sentence_id.getAttribute("title"))
+
+   type = sentence_id.getElementsByTagName('type')[0]
+   print ("Type: %s" % type.childNodes[0].data)
+   format = sentence_id.getElementsByTagName('format')[0]
+   print ("Format: %s" % format.childNodes[0].data)
+   rating = sentence_id.getElementsByTagName('rating')[0]
+   print ("Rating: %s" % rating.childNodes[0].data)
+   description = sentence_id.getElementsByTagName('description')[0]
+   print ("Description: %s" % description.childNodes[0].data)
