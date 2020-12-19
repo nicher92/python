@@ -21,20 +21,15 @@ ners = {
 
 NOTE! NER_TYPE is the label not the drug text/name
 """
-from xml import etree
+import xml.dom.minidom
+
 def parse_xml(xmlFile):
     """
     parse the xml
     """
-    with open(xmlFile) as fobj:
-        xml = fobj.read()
-    root = etree.fromstring(xml)
-    for appt in root.getchildren():
-        for elem in appt.getchildren():
-            if not elem.text:
-                text = "None"
-            else:
-                text = elem.text
-            print(elem.tag + "=>" + text)
-#if __name__ == "__main__":
-    #parse_xml("/ Users/ Akhav/ Documents/ GitHub/ python/ data/ test.xml")
+    doc = xml.dom.minidom.parse("test.xml")
+    #get the list of xml tags which is start with sentence
+    tags = doc.getElementsByTagName("sentence id")
+    sentences={}
+    for tag in tags:
+        sentences[sentence id] = tag.getattribute("name")
