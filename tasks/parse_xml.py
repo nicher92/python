@@ -27,7 +27,7 @@ def parse_xml(xmlFile):
     """
     parse the xml
     """
-    doc = xml.dom.minidom.parse("test.xml")
+    doc = xml.dom.minidom.parse("data/21728182.xml")
     #get the list of xml tags which is start with sentence
     tags = doc.getElementsByTagName("sentence id")
     sentences={}
