@@ -28,7 +28,7 @@ DOMTree = xml.dom.minidom.parse("21728182.xml")
 collection = DOMTree.documentElement
 
 # Get all the sentence_id in the collection
-sentences = collection.getElementsByTagName("sentence_id")
+sentences = collection.getElementsByTagName("sentence")
 
 # Print detail of each sentence_id.
 for sentence in sentences:
